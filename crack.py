@@ -313,7 +313,7 @@ def crack(h,algo):
         
     elif mode=="3":
         count = 0
-        with open("rockyou.txt","r",encoding="latin-1") as f:
+        with open("/usr/share/wordlists/rockyou.txt","r",encoding="latin-1") as f:
             for line in f:
                     
                 gs_paswd = line.strip()
