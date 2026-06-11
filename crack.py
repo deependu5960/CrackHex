@@ -1,5 +1,4 @@
 import bcrypt
-import bcrypt
 import hashlib
 from passlib.hash import md5_crypt, sha256_crypt, sha512_crypt,lmhash
 from argon2 import PasswordHasher
