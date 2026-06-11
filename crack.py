@@ -205,7 +205,7 @@ def crack(h,algo):
         if flt == "2":
             str_letter = input(f"\033[1;91m Enter starting letters : \033[0m")
             count = 0
-            with open("rockyou.txt","r",encoding="latin-1") as f:
+            with open("/usr/share/wordlists/rockyou.txt","r",encoding="latin-1") as f:
                 for line in f:
                     gs_paswd = line.strip()
                     if gs_paswd.startswith(str_letter):
