@@ -74,6 +74,7 @@ def crack_sha512(h,gs_paswd,count):
     if hashlib.sha512(gs_paswd.encode()).hexdigest() == h.lower():
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "SHA512", gs_paswd)
         return True
     else:
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
