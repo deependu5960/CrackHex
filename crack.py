@@ -176,6 +176,10 @@ def crack_pass(algo,h,gs_paswd,count):
         if crack_sha256_crypt(h,gs_paswd,count):
             return True
 
+    elif algo=="Drupal-7":
+        if crack_drupal7(h,gs_paswd,count):
+            return True
+            
     elif algo=="SHA512-Crypt":
         if crack_sha512_crypt(h,gs_paswd,count):
             return True
