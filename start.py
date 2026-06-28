@@ -20,7 +20,7 @@ if __name__ == "__main__":
         if hash_pwd.lower() =="exit":
             exit()
         else:
-            cache_result = check_database_cache(target_hash)
+            cache_result = check_database_cache(hash_pwd)
             if cache_result["found"]:
                 print(f"[+] Instant Match Found in Neon DB!")
                 print(f"[+] Password is: {cache_result['plain_text']}")
