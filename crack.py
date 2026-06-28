@@ -12,6 +12,7 @@ def crack_bcrypt(h,gs_paswd,count):
     if bcrypt.checkpw(gs_paswd.encode("utf-8"),h.encode("utf-8")):
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "Bcrypt", gs_paswd)
         return True
     else:
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
@@ -21,6 +22,7 @@ def crack_md5(h,gs_paswd,count):
     if hashlib.md5(gs_paswd.encode()).hexdigest() == h.lower():
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "MD5", gs_paswd)
         return True
     else:
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
@@ -32,6 +34,7 @@ def crack_md4(h,gs_paswd,count):
     if hsh.hexdigest().lower() == h.lower():
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "MD4", gs_paswd)
         return True
     else:
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
@@ -43,6 +46,7 @@ def crack_ntlm(h,gs_paswd,count):
     if hsh.hexdigest().lower() == h.lower():
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "NTLM", gs_paswd)
         return True
     else:
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
@@ -53,6 +57,7 @@ def crack_lm(h,gs_paswd,count):
         if lmhash.verify(gs_paswd,h.lower()):
             print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
             print("Total attempts : ",count)
+            save_to_database_cache(h, "LM", gs_paswd)
             return True
         else:
             print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
@@ -66,6 +71,7 @@ def crack_sha256(h,gs_paswd,count):
     if hashlib.sha256(gs_paswd.encode()).hexdigest() == h.lower():
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "SHA256", gs_paswd)
         return True
     else:
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
@@ -85,6 +91,7 @@ def crack_sha1(h,gs_paswd,count):
     if hashlib.sha1(gs_paswd.encode()).hexdigest() == h.lower():
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "SHA1", gs_paswd)
         return True
     else:
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
@@ -94,6 +101,7 @@ def crack_md5_crypt(h,gs_paswd,count):
     if md5_crypt.verify(gs_paswd,h):
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "MD5-Crypt", gs_paswd)
         return True
     else:
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
@@ -103,6 +111,7 @@ def crack_sha256_crypt(h,gs_paswd,count):
     if sha256_crypt.verify(gs_paswd,h):
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "SHA256-Crypt", gs_paswd)
         return True
     else:
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
@@ -112,6 +121,7 @@ def crack_sha512_crypt(h,gs_paswd,count):
     if sha512_crypt.verify(gs_paswd,h):
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "SHA512-Crypt", gs_paswd)
         return True
     else:
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
@@ -121,6 +131,7 @@ def crack_drupal7(h,gs_paswd,count):
     if verify_drupal_hash(gs_paswd, h):
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "Drupal 7 sha512", gs_paswd)
         return True
     else:
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
@@ -132,6 +143,7 @@ def crack_argon2(h,gs_paswd,count):
         ph.verify(h,gs_paswd)
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
+        save_to_database_cache(h, "Argon-2", gs_paswd)
         return True
     except (VerifyMismatchError,VerificationError):
         print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
