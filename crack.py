@@ -2,6 +2,7 @@ import bcrypt
 import hashlib
 from passlib.hash import md5_crypt, sha256_crypt, sha512_crypt,lmhash
 from argon2 import PasswordHasher
+from drupal_hash import verify_drupal_hash
 from Crypto.Hash import MD4
 from argon2.exceptions import VerifyMismatchError,VerificationError
 from itertools import permutations
@@ -107,6 +108,15 @@ def crack_sha256_crypt(h,gs_paswd,count):
 
 def crack_sha512_crypt(h,gs_paswd,count):
     if sha512_crypt.verify(gs_paswd,h):
+        print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
+        print("Total attempts : ",count)
+        return True
+    else:
+        print(f"\033[91m[FAILED]\033[0m Password not matched! : ",gs_paswd)
+        return False
+
+def crack_drupal7(h,gs_paswd,count):
+    if verify_drupal_hash(gs_paswd, h):
         print(f"\033[1;92m[SUCCESS]\033[0m Password matched : ",f"\033[1;92m{gs_paswd}\033[0m")
         print("Total attempts : ",count)
         return True
