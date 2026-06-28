@@ -21,7 +21,7 @@ def identify_hash(h):
         
     elif h.startswith("$S$"):
         print("Algorithm : Drupal 7 SHA512")
-        print("Sorry, We can't crack this algo right now.\n Algorithm is Under working...")
+        crack(h,"Drupal-7")
 
     elif h.startswith(("$argon2i$", "$argon2d$", "$argon2id$")):
         print("Algorithm : Argon2")
