@@ -18,6 +18,10 @@ def identify_hash(h):
     elif h.startswith("$6$"):
         print("Algorithm : SHA512-Crypt")
         crack(h,"SHA512-Crypt")
+        
+    elif h.startswith("$S$"):
+        print("Algorithm : Drupal 7 SHA512")
+        print("Sorry, We can't crack this algo right now.\n Algorithm is Under working...")
 
     elif h.startswith(("$argon2i$", "$argon2d$", "$argon2id$")):
         print("Algorithm : Argon2")
