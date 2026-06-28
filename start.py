@@ -1,4 +1,5 @@
 from identifier import identify_hash
+from db import check_database_cache
 
 if __name__ == "__main__":
     while True:
@@ -19,5 +20,12 @@ if __name__ == "__main__":
         if hash_pwd.lower() =="exit":
             exit()
         else:
-            identify_hash(hash_pwd)
+            cache_result = check_database_cache(target_hash)
+            if cache_result["found"]:
+                print(f"[+] Instant Match Found in Neon DB!")
+                print(f"[+] Password is: {cache_result['plain_text']}")
+                # Exit early here because we already have the answer!
+                exit()
+            else :
+                identify_hash(hash_pwd)
     
