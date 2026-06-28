@@ -6,6 +6,7 @@ from drupal_hash import verify_drupal_hash
 from Crypto.Hash import MD4
 from argon2.exceptions import VerifyMismatchError,VerificationError
 from itertools import permutations
+from db import save_to_database_cache
 
 def crack_bcrypt(h,gs_paswd,count):
     if bcrypt.checkpw(gs_paswd.encode("utf-8"),h.encode("utf-8")):
