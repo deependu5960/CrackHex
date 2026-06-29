@@ -22,8 +22,9 @@ if __name__ == "__main__":
         else:
             cache_result = check_database_cache(hash_pwd)
             if cache_result["found"]:
-                print(f"[+] Instant Match Found in Neon DB!")
-                print(f"[+] Password is: {cache_result['plain_text']}")
+                print(f"[+] Instant Match Found in Crack-Hex DB!")
+                print(f"[+] Algorithm : {cache_result['algo']}")
+                print(f"\033[1;92m[+] Password : {cache_result['plain_text']}\033[0m")
                 # Exit early here because we already have the answer!
                 exit()
             else :
