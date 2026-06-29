@@ -16,7 +16,8 @@ if __name__ == "__main__":
         
         print(f"\033[94m{banner}\033[0m")
         
-        hash_pwd = input(f"\033[1;91m Enter Your Hash : \033[0m","\n")
+        hash_pwd = input(f"\033[1;91m Enter Your Hash : \033[0m")
+        print("")
         if hash_pwd.lower() =="exit":
             exit()
         else:
