@@ -16,7 +16,7 @@ if __name__ == "__main__":
         
         print(f"\033[94m{banner}\033[0m")
         
-        hash_pwd = input(f"\033[1;91m Enter Your Hash : \033[0m")
+        hash_pwd = input(f"\033[1;91m Enter Your Hash : \033[0m","\n")
         if hash_pwd.lower() =="exit":
             exit()
         else:
@@ -25,8 +25,9 @@ if __name__ == "__main__":
                 print(f"[+] Instant Match Found in Crack-Hex DB!")
                 print(f"[+] Algorithm : {cache_result['algo']}")
                 print(f"\033[1;92m[+] Password : {cache_result['plain_text']}\033[0m")
-                # leave the interation early here because we already have the answer!
-                continue
+                # Exit the loop early here because we already have the answer!
+                exit()
             else :
                 identify_hash(hash_pwd)
+                exit()
     
