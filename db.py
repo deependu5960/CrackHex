@@ -12,7 +12,7 @@ def check_database_cache(hash_value):
             if data.get("found"):
                 return data  # Returns {"found": True, "plain_text": "...", "algo": "..."}
     except Exception as e:
-        print(f"\033[0;91m\n[*] Database cache bypass (Server offline or timeout)\033[0m ")
+        print(f"\033[0;91m[*] Database cache bypass (Server offline or timeout)\033[0m ")
     return {"found": False}
 
 def save_to_database_cache(hash_value, algo, plain_text):
@@ -24,6 +24,6 @@ def save_to_database_cache(hash_value, algo, plain_text):
             "plain_text": plain_text
         }
         requests.post(f"{SERVER_URL}/store", json=payload, timeout=4)
-        print("\n[+] Successfully saved hash mapping to central Crack-Hex DB!")
+        print("[+] Successfully saved hash mapping to central Crack-Hex DB!")
     except Exception as e:
-        print(f"\033[0;91m\n[*] Failed to save to database cache\033[0m")
+        print(f"\033[0;91m[*] Failed to save to database cache\033[0m")
