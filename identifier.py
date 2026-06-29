@@ -65,4 +65,4 @@ def identify_hash(h):
             else:
                 print(f"\033[91m[-] No Algorithm Found, Please check the length of hash\033[0m")
         else:
-            print( f"\033[1,91m[-] Invalid Hash\033[0m" )
+            print( f"\033[1;91m[-] Invalid Hash\033[0m" )
